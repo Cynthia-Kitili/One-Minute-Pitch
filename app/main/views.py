@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from . import main
-from ..requests import get_pitches, get_pitch, search_pitch
+from ..requests import get_pitches, get_pitch, search_pitch  
 from .forms import CommentsForm
 from ..models import Comment,list_of_pitches, Pitch
 
@@ -51,6 +51,6 @@ def new_comment(id):
         comment = form.comment.data
         new_comment = Comment(pitch_result.id,pitch,comment)
         new_comment.save_comment()
-        return redirect(url_for('pitch', pitch_id= pitch_result.id))
+        return redirect(url_for('main.pitch', pitch_id= pitch_result.id))
     title = f'{pitch_result.id} review'
     return render_template('new_comment.html',title = title, comment_form=form,pitch = pitch_result)
