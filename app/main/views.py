@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for
 from . import main
 from ..requests import get_pitches, get_pitch, search_pitch
 from .forms import CommentsForm
-from ..models import Comment
+from ..models import Comment,list_of_pitches, Pitch
 
 @main.route('/')
 def index():
