@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <form>
+            <input type="text" name="pich_query" placeholder="Search for a Pitch" class="form-control">
+            <input type="submit"  value="Submit" class="btn btn-default">
+        </form>
+    
+    </div>
+
+    <h3> All Pitches</h3>
+    <ul>
+        {{ macro.displayPitches(all_pitches) }}
+    </ul>
+
+{% endblock %}
