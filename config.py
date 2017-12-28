@@ -5,6 +5,7 @@ class Config:
     General configuration parent class
     '''
     SECRET_KEY = 'TheDifference'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vincent:Empharse333@localhost/pitch'
 
 
 
