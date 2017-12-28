@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, 
+from flask import render_template, request, redirect    
 from . import main 
 from ..requests import get_pitches, get_pitch, search_pitch  
 from .forms import CommentsForm
