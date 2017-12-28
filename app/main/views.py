@@ -3,6 +3,7 @@ from . import main
 from ..requests import get_pitches, get_pitch, search_pitch  
 from .forms import CommentsForm
 from ..models import Comment,list_of_pitches, Pitch
+from flask_login import login_required
 
 @main.route('/')
 def index():
@@ -42,6 +43,7 @@ def search(pitch_name):
     return render_template('search.html',pitches = searched_pitches)
 
 @main.route('/pitch/comments/new/<int:id>', methods = ['GET','POST'])
+@login_required
 def new_comment(id):
     form = CommentsForm()
     pitch_result = get_pitch(id)
