@@ -1,3 +1,5 @@
+from . import db 
+
 list_of_pitches = [[12,'pitch tweleve'],[14,'pitch 14']]
 class Pitch:
     '''
