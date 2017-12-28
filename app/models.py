@@ -1,5 +1,6 @@
 from . import db 
 from werkzeug.security import generate_password_hash,check_password_hash
+from flask_login import UserMixin
 
 list_of_pitches = [[12,'pitch tweleve'],[14,'pitch 14']]
 class Pitch:
@@ -36,10 +37,11 @@ class Comment:
 
         return results
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255))
+    username = db.Column(db.String(255),index = True)
+    email = db.Column(db.String(255),unique = True,index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     pass_secure = db.Column(db.String(255))
 
