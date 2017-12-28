@@ -1,9 +1,10 @@
-from flask import render_template, request, redirect    
+from flask import render_template, request, redirect, url_for  
 from . import main 
 from ..requests import get_pitches, get_pitch, search_pitch  
 from .forms import CommentsForm
 from ..models import Comment,list_of_pitches, Pitch
 from flask_login import login_required
+from .. import db,photos
 
 @main.route('/')
 def index():
@@ -16,7 +17,7 @@ def index():
     search_pitch = request.args.get('pitch_query')
 
     if search_pitch:
-        return redirect(url_for('movie',pitch_name= search_pitch)) 
+        return redirect(url_for('movie',pitch_name= search_pitch))  
     else:
         return render_template('index.html', title = title , all_pitches= all_pitches)
 
@@ -56,3 +57,14 @@ def new_comment(id):
         return redirect(url_for('main.pitch', pitch_id= pitch_result.id))
     title = f'{pitch_result.id} review'
     return render_template('new_comment.html',title = title, comment_form=form,pitch = pitch_result)
+
+@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@login_required
+def update_pic(uname):
+    user = User.query.filter_by(username = uname).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path
+        db.session.commit()
+    return redirect(url_for('main.profile',uname=uname))
