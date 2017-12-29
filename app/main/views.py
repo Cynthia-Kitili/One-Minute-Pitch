@@ -54,7 +54,7 @@ def new_comment(id):
         comment = form.comment.data
 
         # redefine how the comments are constructed 
-        new_comment = Comment(pitch_id=pitch.id,pitch_title=title,image_path=movie.poster,pitch_comment=review,user=current_user)
+        new_comment = Comment(pitch_id=pitch_result.id,pitch_title=title,image_path=movie.poster,pitch_comment=review,user=current_user)
 
 
         new_comment.save_comment()
