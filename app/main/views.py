@@ -52,7 +52,11 @@ def new_comment(id):
     if form.validate_on_submit():
         pitch = form.pitch.data
         comment = form.comment.data
-        new_comment = Comment(pitch_result.id,pitch,comment)
+
+        # redefine how the comments are constructed 
+        new_comment = Comment(pitch_id=pitch.id,pitch_title=title,image_path=movie.poster,pitch_comment=review,user=current_user)
+
+
         new_comment.save_comment()
         return redirect(url_for('main.pitch', pitch_id= pitch_result.id))
     title = f'{pitch_result.id} review'
