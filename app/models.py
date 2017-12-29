@@ -60,12 +60,12 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255))
     comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
 
-    def save_review(self):
+    def save_comment(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def get_reviews(cls,id):
+    def get_comments(cls,id):
         reviews = Comment.query.filter_by(pitch_id=id).all()
         return comments
 
