@@ -3,8 +3,10 @@ from . import main
 from ..requests import get_pitches, get_pitch, search_pitch  
 from .forms import CommentsForm, UpdateProfile
 from ..models import Comment,list_of_pitches, Pitch
-from flask_login import login_required
+from flask_login import login_required, current_user
 from .. import db,photos
+
+import markdown2
 
 @main.route('/')
 def index():
