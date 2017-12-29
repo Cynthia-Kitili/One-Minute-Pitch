@@ -1,0 +1,80 @@
+# Pitching App
+
+# AUTHOR
+
+#### Kipngetich Ngeno
+
+# PROJECT NAME
+
+#### One Minute Pitch
+
+# DESCRIPTION
+
+#### This is an app that allows users to create,submit,vote pitches based on categories
+
+# Specs
+
+#### User Stories
+
+
+* A users can see pitches that other people have posted
+* A user can vote on posted pitches with either a down or an up vote
+* A user can comment on different pitches and leave feedback
+* A user can submit a pitch in any category
+* A user can submit to different categories
+
+## Prerequisites
+* Python3.6
+
+# Installation
+
+* The app is easily available on Github
+* Clone this repository and run the run.py fil
+
+# How it works
+
+#### 
+* A user needs to sign up
+* A user the needs to sign in order to create,vote and post pitches 
+
+# CREDITS
+
+#### Moringa School, StackOverflow.com and W3 schools
+
+# Technologies Used
+
+#### This project uses major technologies which are :
+* HTML5/CSS 
+* Bootstrap 
+* Python3.6
+* flask
+
+# Support and Contacts
+
+#### In case You have any issues using this code please do no hesitate to get in touch with me through khalifngeno@gmail.com or leave a commit here on github.
+
+# License
+
+* MIT License
+
+Copyright (c) 2017 Kipngetich Ngeno
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.*
+
+Copyright (c) 2017 ** Kipngetich Ngeno **
