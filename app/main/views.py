@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, abort  
 from . import main 
 from ..requests import get_pitches, get_pitch, search_pitch  
-from .forms import CommentsForm, UpdateProfile
+from .forms import CommentsForm, UpdateProfile, PitchForm
 from ..models import Comment,list_of_pitches, Pitch, User 
 from flask_login import login_required, current_user
 from .. import db,photos
@@ -45,7 +45,7 @@ def search(pitch_name):
 
     return render_template('search.html',pitches = searched_pitches)
 
-@main.route('category/comment/new/<int:id>', methods =['GET','POST'])
+@main.route('category/pitch/new/<int:id>', methods =['GET','POST'])
 @login_required
 def new_pitch(id):
     '''
@@ -60,6 +60,11 @@ def new_pitch(id):
     if form.validate_on_submit():
         inputted_pitch= form.content.data
         new_pitch= Pitch(inputted_pitch, user_id= current_user.id, category_id= category.id)
+
+        new_pitch.save_pitch()
+        return return redirect(url_for('.category', id=category.id))
+
+    return render_template('new_pitch.html', new_pitch_form= form, category= category)
 
 
 @main.route('/pitch/comments/new/<int:id>', methods = ['GET','POST'])
