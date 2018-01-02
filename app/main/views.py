@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, abort  
 from . import main  
 from .forms import CommentsForm, UpdateProfile, PitchForm
-from ..models import Comment,list_of_pitches, Pitch, User 
+from ..models import Comment, Pitch, User 
 from flask_login import login_required, current_user
 from .. import db,photos
 
@@ -46,24 +46,24 @@ def search(pitch_name):
 
     return render_template('search.html',pitches = searched_pitches)
 
-@main.route('/category/pitch/new/<int:id>', methods = ['GET','POST'])
+@main.route('/category/pitch/new/', methods = ['GET','POST'])
 @login_required
-def new_pitch(id):
+def new_pitch():
     '''
     Function that creates new pitches
     '''
     form = PitchForm()
-    category = PitchCategory.query.filter_by(id=id).first()
+
 
     if category is None:
         abort( 404 )
 
     if form.validate_on_submit():
-        inputted_pitch= form.content.data
-        new_pitch= Pitch(inputted_pitch, user_id= current_user.id, category_id= category.id)
+        pitch= form.content.data
+        category_id = form.category_id.data
+        new_pitch= Pitch(id= current_user.id,pitch= pitch, category_id= category_id)
 
-        new_pitch.save_pitch()
-        return redirect(url_for('.category', id=category.id))   
+        new_pitch.save_pitch() 
 
     return render_template('new_pitch.html', new_pitch_form= form, category= category)
 
@@ -146,11 +146,13 @@ def single_comment(id):
     format_comment = markdown2.markdown(comment.pitch_comment,extras=["code-friendly", "fenced-code-blocks"])
     return render_template('comment.html',comment = comment,format_comment=format_comment)
 
-@main.route('/test/')
-def test():
+@main.route('/test/<int:id>')
+def test(id):
     '''
     this is route for basic testing
     '''
     pitches= Pitch.get_all_pitches()
+    pitches_by_category = Pitch.get_pitches_by_category(id)
 
-    return render_template('test.html',pitches =pitches )
+    return render_template('test.html',pitches =pitches, pitches_cat= pitches_by_category )
+
