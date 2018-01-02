@@ -11,14 +11,32 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 list_of_pitches = [[12,'pitch tweleve'],[14,'pitch 14']]
-class Pitch:
+class Pitch(db.Model):
     '''
     Pitch class to define Pitch Objects
     '''
+    __tablename__ = 'pitch'
 
-    def __init__(self,id,pitch):
-        self.id =id
-        self.pitch = pitch
+    id = db.Column(db.Integer,primary_key = True)
+    pitch = db.Column(db.String)
+    category_id = db.Column(db.Integer)
+        
+
+    def save_pitch(self):
+        '''
+        Function that saves pitches
+        '''
+        db.session.add(self)
+        db.session.commit()
+    
+    @classmethod
+    def get_all_pitches(cls):
+        '''
+        Function that queries the databse and returns all the pitches
+        '''
+        return Pitch.query.all()
+
+
 
 
 class Comment(db.Model):
@@ -98,7 +116,7 @@ class Role(db.Model):
         return f'User {self.name}'  
 
 
-class PitchCategory(db.model):
+class PitchCategory(db.Model):
     '''
     Function that defines different categories of pitches
     '''
@@ -108,10 +126,6 @@ class PitchCategory(db.model):
     id = db.Column(db.Integer, primary_key=True)
     name_of_category = db.Column(db.String(255))
     category_description = db.Column(db.String(255))
-
-    #saving the category to the database
-    db.session.add(self)
-    db.session.commit() 
 
     @classmethod
     def get_categories(cls):

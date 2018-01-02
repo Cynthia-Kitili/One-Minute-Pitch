@@ -1,6 +1,5 @@
 from flask import render_template, request, redirect, url_for, abort  
-from . import main 
-from ..requests import get_pitches, get_pitch, search_pitch  
+from . import main  
 from .forms import CommentsForm, UpdateProfile, PitchForm
 from ..models import Comment,list_of_pitches, Pitch, User 
 from flask_login import login_required, current_user
@@ -8,20 +7,22 @@ from .. import db,photos
 
 import markdown2
 
+
+
 @main.route('/')
 def index():
     '''
     View root page function that returns the index page and its data
     '''
-    all_pitches = get_pitches()  
     title = 'Home - Welcome to The best Pitching Website Online'
 
     search_pitch = request.args.get('pitch_query')
+    pitches= Pitch.get_all_pitches()
 
     if search_pitch:
         return redirect(url_for('movie',pitch_name= search_pitch))  
     else:
-        return render_template('index.html', title = title , all_pitches= all_pitches)
+        return render_template('index.html', title = title, pitches= pitches )
 
 @main.route('/pitch/<int:pitch_id>')
 def pitch(pitch_id):
@@ -45,7 +46,7 @@ def search(pitch_name):
 
     return render_template('search.html',pitches = searched_pitches)
 
-@main.route('category/pitch/new/<int:id>', methods =['GET','POST'])
+@main.route('/category/pitch/new/<int:id>', methods = ['GET','POST'])
 @login_required
 def new_pitch(id):
     '''
@@ -79,7 +80,7 @@ def category(id):
     pitches_in_category = Pitches.get_pitch(id)
     return render_template('category.html' ,category= category, pitches= pitches_in_category)
 
-@main.route('/pitch/comments/new/<int:id>', methods = ['GET','POST'])
+@main.route('/pitch/comments/new/<int:id>',methods = ['GET','POST'])
 @login_required
 def new_comment(id):
     form = CommentsForm()
@@ -144,3 +145,12 @@ def single_comment(id):
         abort(404)
     format_comment = markdown2.markdown(comment.pitch_comment,extras=["code-friendly", "fenced-code-blocks"])
     return render_template('comment.html',comment = comment,format_comment=format_comment)
+
+@main.route('/test/')
+def test():
+    '''
+    this is route for basic testing
+    '''
+    pitches= Pitch.get_all_pitches()
+
+    return render_template('test.html',pitches =pitches )
