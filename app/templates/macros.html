@@ -25,3 +25,41 @@
 {% endfor %}
 {% endmacro %}
 
+{% macro displayPitchesInCategories(pitches)%}
+  <h3>Interview Pitches</h3>
+  {% for pitch in pitches %}
+    {% if pitch.category_id==1 %}
+        {{pitch.pitch}}
+    {% endif%}
+  {% endfor %}
+
+  <hr>
+
+  <h3>Pick Up Lines </h3>
+  {% for pitch in pitches %}
+    {% if pitch.category_id==2 %}
+        {{pitch.pitch}}
+    {% endif%}
+  {% endfor %}
+
+  <hr>
+
+  <h3>Promotion Pitches</h3>
+  {% for pitch in pitches %}
+    {% if pitch.category_id==3 %}
+        {{pitch.pitch}}
+    {% endif%}
+  {% endfor %}
+
+  <hr>
+
+  <h3>Product Pitches</h3>
+  {% for pitch in pitches %}
+    {% if pitch.category_id==4 %}
+        {{pitch.pitch}}
+    {% endif%}
+  {% endfor %}
+{% endmacro%}
+
+<hr>
+

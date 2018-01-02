@@ -4,11 +4,9 @@
     <div class="container">
 
         {% for pitch in pitches %}
-        {{pitch.id}}
-        {% endfor %}
-
-        {% for pitch in pitches_cat %}
-        {{pitch.pitch}}
+        {% if pitch.category_id=1%}
+            {{pitch.pitch}}
+        {% endif%}
         {% endfor %}
 
     </div>

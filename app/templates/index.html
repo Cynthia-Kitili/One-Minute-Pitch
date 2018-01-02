@@ -17,10 +17,11 @@
     
     </div>
 
-    <h3> All Pitches</h3>
-    <ul>
-        {{ macro.displayPitches(pitches) }}
-    </ul>
+    <hr>
+
+    {{macro.displayPitchesInCategories(pitches)}}
+
+    
     <a href="{{url_for('main.new_pitch')}}">
         Add a new Pitch
     </a>
