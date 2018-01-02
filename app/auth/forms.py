@@ -26,3 +26,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
     
+class PitchForm(FlaskForm):
+    content = TextAreaField('YOUR PITCH')
+    submit = SubmitField('SUBMIT')
+    

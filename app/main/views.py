@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort
 from . import main 
 from ..requests import get_pitches, get_pitch, search_pitch  
 from .forms import CommentsForm, UpdateProfile
-from ..models import Comment,list_of_pitches, Pitch
+from ..models import Comment,list_of_pitches, Pitch, User 
 from flask_login import login_required, current_user
 from .. import db,photos
 
@@ -44,6 +44,23 @@ def search(pitch_name):
     title = f'search results for {pitch_name}'
 
     return render_template('search.html',pitches = searched_pitches)
+
+@main.route('category/comment/new/<int:id>', methods =['GET','POST'])
+@login_required
+def new_pitch(id):
+    '''
+    Function that creates new pitches
+    '''
+    form = PitchForm()
+    category = PitchCategory.query.filter_by(id=id).first()
+
+    if category is None:
+        abort( 404 )
+
+    if form.validate_on_submit():
+        inputted_pitch= form.content.data
+        new_pitch= Pitch(inputted_pitch, user_id= current_user.id, category_id= category.id)
+
 
 @main.route('/pitch/comments/new/<int:id>', methods = ['GET','POST'])
 @login_required
