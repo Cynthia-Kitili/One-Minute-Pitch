@@ -29,7 +29,7 @@
   <h3>Interview Pitches</h3>
   {% for pitch in pitches %}
     {% if pitch.category_id==1 %}
-        {{pitch.pitch}}
+        <p>Pitch:{{pitch.pitch}}</p>
     {% endif%}
   {% endfor %}
 
@@ -38,7 +38,7 @@
   <h3>Pick Up Lines </h3>
   {% for pitch in pitches %}
     {% if pitch.category_id==2 %}
-        {{pitch.pitch}}
+      <p>Pitch:{{pitch.pitch}}</p>
     {% endif%}
   {% endfor %}
 
@@ -47,7 +47,7 @@
   <h3>Promotion Pitches</h3>
   {% for pitch in pitches %}
     {% if pitch.category_id==3 %}
-        {{pitch.pitch}}
+      <p>Pitch:{{pitch.pitch}}</p>
     {% endif%}
   {% endfor %}
 
@@ -56,7 +56,7 @@
   <h3>Product Pitches</h3>
   {% for pitch in pitches %}
     {% if pitch.category_id==4 %}
-        {{pitch.pitch}}
+      <p>Pitch:{{pitch.pitch}}</p>
     {% endif%}
   {% endfor %}
 {% endmacro%}

@@ -14,16 +14,16 @@
             <input type="text" name="pich_query" placeholder="Search for a Pitch" class="form-control">
             <input type="submit"  value="Submit" class="btn btn-default">
         </form>
+        <a href="{{url_for('main.new_pitch')}}">
+            <br>
+            Add a new Pitch
+        </a>
+
+        <hr>
+        
+            {{macro.displayPitchesInCategories(pitches)}}
     
     </div>
 
-    <hr>
-
-    {{macro.displayPitchesInCategories(pitches)}}
-
-    
-    <a href="{{url_for('main.new_pitch')}}">
-        Add a new Pitch
-    </a>
 
 {% endblock %}
