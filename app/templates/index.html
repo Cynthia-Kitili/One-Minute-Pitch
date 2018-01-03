@@ -10,14 +10,31 @@
 {% block content %}
 
     <div class="container">
-        <form>
-            <input type="text" name="pich_query" placeholder="Search for a Pitch" class="form-control">
-            <input type="submit"  value="Submit" class="btn btn-default">
-        </form>
         <a href="{{url_for('main.new_pitch')}}">
             <br>
             Add a new Pitch
+        </a> 
+        <br>
+        <a href="{{url_for('main.interview')}}">
+            <br>
+            Inteview Pitches
         </a>
+        <br>
+        <a href="{{url_for('main.pick_up_line')}}">
+            <br>
+            Pick Up Lines
+        </a>
+        <br>
+        <a href="{{url_for('main.promotion')}}">
+            <br>
+            Promotion Pitches
+        </a>
+        <br>
+        <a href="{{url_for('main.product')}}">
+            <br>
+            Product Pitches
+        </a>
+        <br>
 
         <hr>
         

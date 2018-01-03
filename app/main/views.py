@@ -24,6 +24,71 @@ def index():
     else:
         return render_template('index.html', title = title, pitches= pitches )
 
+#this section consist of the category root functions
+
+@main.route('/inteview/pitches/')
+def interview():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Home - Welcome to The best Pitching Website Online'
+
+    search_pitch = request.args.get('pitch_query')
+    pitches= Pitch.get_all_pitches()
+
+    if search_pitch:
+        return redirect(url_for('pitch',pitch_name= search_pitch))  
+    else:
+        return render_template('interview.html', title = title, pitches= pitches )
+
+@main.route('/pick_up_lines/pitches/')
+def pick_up_line():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Home - Welcome to The best Pitching Website Online'
+
+    search_pitch = request.args.get('pitch_query')
+    pitches= Pitch.get_all_pitches()
+
+    if search_pitch:
+        return redirect(url_for('pitch',pitch_name= search_pitch))  
+    else:
+        return render_template('pick_up_lines.html', title = title, pitches= pitches )
+
+@main.route('/promotion/pitches/')
+def promotion():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Home - Welcome to The best Pitching Website Online'
+
+    search_pitch = request.args.get('pitch_query')
+    pitches= Pitch.get_all_pitches()
+
+    if search_pitch:
+        return redirect(url_for('pitch',pitch_name= search_pitch))  
+    else:
+        return render_template('promotion.html', title = title, pitches= pitches )
+
+
+@main.route('/product/pitches/')
+def product():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    title = 'Home - Welcome to The best Pitching Website Online'
+
+    search_pitch = request.args.get('pitch_query')
+    pitches= Pitch.get_all_pitches()
+
+    if search_pitch:
+        return redirect(url_for('pitch',pitch_name= search_pitch))  
+    else:
+        return render_template('product.html', title = title, pitches= pitches )
+ 
+#  end of category root functions
+
 @main.route('/pitch/<int:pitch_id>')
 def pitch(pitch_id):
 
