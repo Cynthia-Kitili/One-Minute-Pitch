@@ -1,18 +1,20 @@
-# Pitching App
+# APP NAME
+
+## One Minute Pitch
 
 # AUTHOR
 
-#### Kipngetich Ngeno
-
-# PROJECT NAME
-
-#### One Minute Pitch
+Kipngetich Ngeno
 
 # DESCRIPTION
 
-#### This is an app that allows users to create,submit,vote pitches based on categories
+This is an app that allows users to create,submit,vote pitches based on categories
 
-# Specs
+#### Pitch Categories
+* pickup lines
+* interview pitches
+* product pitches
+* promotion pitches
 
 #### User Stories
 
@@ -23,17 +25,19 @@
 * A user can submit a pitch in any category
 * A user can submit to different categories
 
+
 ## Prerequisites
 * Python3.6
 
-# Installation
-
-* The app is easily available on Github
-* Clone this repository and run the run.py fil
+## Installation steps 
+* $ git clone https://github.com/Kipngetich33/One-Minute-Pitch.git
+* $ cd One-Minute-Pitch
+* $ source virtual/bin/activate
+* Inside the manage.py module change the config_name parameter from 'production' to 'development' ie app = create_app('production') should be app = create_app('development')
+* $ ./start.sh 
 
 # How it works
 
-#### 
 * A user needs to sign up
 * A user the needs to sign in order to create,vote and post pitches 
 
@@ -49,15 +53,18 @@
 * Python3.6
 * flask
 
+
 # Support and Contacts
 
-#### In case You have any issues using this code please do no hesitate to get in touch with me through khalifngeno@gmail.com or leave a commit here on github.
+In case You have any issues using this code please do no hesitate to get in touch with me through khalifngeno@gmail.com or leave a commit here on github.
 
 # License
 
 * MIT License
 
 Copyright (c) 2017 Kipngetich Ngeno
+
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -77,4 +84,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*
 
-Copyright (c) 2017 ** Kipngetich Ngeno **
+Copyright (c) 2017 ** Kipngetich Ngeno ** 

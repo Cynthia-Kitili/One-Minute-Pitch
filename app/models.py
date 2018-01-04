@@ -20,7 +20,6 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
     pitch = db.relationship('Pitch',backref = 'user',lazy="dynamic")
 
     def save_comment(self):
@@ -56,6 +55,7 @@ class Pitch(db.Model):
     pitch = db.Column(db.String)
     category_id = db.Column(db.Integer)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref = 'comment',lazy="dynamic")
         
 
     def save_pitch(self):
@@ -89,14 +89,16 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     pitch_id = db.Column(db.Integer)
-    pitch_title = db.Column(db.String)
-    image_path = db.Column(db.String)
-    pitch_comment= db.Column(db.String)
-    posted = db.Column(db.DateTime,default=datetime.utcnow)
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comment_title = db.Column(db.String)
+    comment= db.Column(db.String)
+    
 
     def save_comment(self):
-        Comment.all_comments.append(self)
+        '''
+        Function that saves comments
+        '''
+        db.session.add(self)
+        db.session.commit()
 
     @classmethod
     def clear_comments(cls):

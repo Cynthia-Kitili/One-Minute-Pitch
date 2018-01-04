@@ -20,7 +20,7 @@ def index():
     pitches= Pitch.get_all_pitches()
 
     if search_pitch:
-        return redirect(url_for('movie',pitch_name= search_pitch))  
+        return redirect(url_for('pitch',pitch_name= search_pitch))  
     else:
         return render_template('index.html', title = title, pitches= pitches )
 
@@ -31,15 +31,9 @@ def interview():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Home - Welcome to The best Pitching Website Online'
-
-    search_pitch = request.args.get('pitch_query')
     pitches= Pitch.get_all_pitches()
-
-    if search_pitch:
-        return redirect(url_for('pitch',pitch_name= search_pitch))  
-    else:
-        return render_template('interview.html', title = title, pitches= pitches )
+    title = 'Home - Welcome to The best Pitching Website Online'  
+    return render_template('interview.html', title = title, pitches= pitches )
 
 @main.route('/pick_up_lines/pitches/')
 def pick_up_line():
@@ -145,24 +139,16 @@ def category(id):
     pitches_in_category = Pitches.get_pitch(id)
     return render_template('category.html' ,category= category, pitches= pitches_in_category)
 
-@main.route('/pitch/comments/new/<int:id>',methods = ['GET','POST'])
+@main.route('/pitch/comments/new/',methods = ['GET','POST'])
 @login_required
-def new_comment(id):
+def new_comment():
     form = CommentsForm()
-    pitch_result = get_pitch(id)
-
     if form.validate_on_submit():
-        pitch = form.pitch.data
-        comment = form.comment.data
-
-        # redefine how the comments are constructed 
-        new_comment = Comment(pitch_id=pitch_result.id,pitch_title=title,image_path=movie.poster,pitch_comment=review,user=current_user)
-
-
+        new_comment = Comment(pitch_id =101,comment_title=form.title.data,comment=form.comment.data)
         new_comment.save_comment()
-        return redirect(url_for('main.pitch', pitch_id= pitch_result.id))
-    title = f'{pitch_result.id} review'
-    return render_template('new_comment.html',title = title, comment_form=form,pitch = pitch_result)
+        return redirect(url_for('main.index'))
+    #title = f'{pitch_result.id} review'
+    return render_template('new_comment.html',comment_form=form)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
@@ -211,7 +197,7 @@ def single_comment(id):
     format_comment = markdown2.markdown(comment.pitch_comment,extras=["code-friendly", "fenced-code-blocks"])
     return render_template('comment.html',comment = comment,format_comment=format_comment)
 
-@main.route('/test/<int:id>')
+@main.route('/test/<int:id>')  
 def test(id):
     '''
     this is route for basic testing
