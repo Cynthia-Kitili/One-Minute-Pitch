@@ -64,7 +64,7 @@ In case You have any issues using this code please do no hesitate to get in touc
 
 Copyright (c) 2017 Kipngetich Ngeno
 
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -84,4 +84,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*
 
-Copyright (c) 2017 ** Kipngetich Ngeno ** 
+Copyright (c) 2017 ** [Kipngetich Ngeno](https://github.com/Kipngetich33/Kipngetich33.github.io "Github Portfolio") ** 
