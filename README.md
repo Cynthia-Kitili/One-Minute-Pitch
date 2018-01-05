@@ -84,4 +84,4 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*
 
-Copyright (c) 2017 ** [Kipngetich Ngeno](https://github.com/Kipngetich33/Kipngetich33.github.io "Github Portfolio") ** 
+Copyright (c) 2017 ** [Kipngetich Ngeno](https://kipngetich33.github.io/ "Github Portfolio") ** 

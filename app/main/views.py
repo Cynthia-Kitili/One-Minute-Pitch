@@ -139,12 +139,12 @@ def category(id):
     pitches_in_category = Pitches.get_pitch(id)
     return render_template('category.html' ,category= category, pitches= pitches_in_category)
 
-@main.route('/pitch/comments/new/',methods = ['GET','POST'])
+@main.route('/pitch/comments/new/<int:id>',methods = ['GET','POST'])
 @login_required
-def new_comment():
+def new_comment(id):
     form = CommentsForm()
     if form.validate_on_submit():
-        new_comment = Comment(pitch_id =101,comment_title=form.title.data,comment=form.comment.data)
+        new_comment = Comment(pitch_id =id,comment_title=form.title.data,comment=form.comment.data)
         new_comment.save_comment()
         return redirect(url_for('main.index'))
     #title = f'{pitch_result.id} review'
@@ -189,21 +189,21 @@ def update_profile(uname):
     
     return render_template('profile/update.html',form =form)
 
-@main.route('/comment/<int:id>')
-def single_comment(id):
-    comment=Comment.query.get(id)
-    if comment is None:
-        abort(404)
-    format_comment = markdown2.markdown(comment.pitch_comment,extras=["code-friendly", "fenced-code-blocks"])
-    return render_template('comment.html',comment = comment,format_comment=format_comment)
+@main.route('/view/comment/<int:id>')
+def view_comments(id):
+    '''
+    Function that returs  the comments belonging to a particular pitch
+    '''
+    pitch =Pitch.query.filter_by(id=id).first()
+    return render_template('view_comments.html',pitch= pitch, id=id)
+
+
 
 @main.route('/test/<int:id>')  
 def test(id):
     '''
     this is route for basic testing
     '''
-    pitches= Pitch.get_all_pitches()
-    pitches_by_category = Pitch.get_pitches_by_category(id)
-
-    return render_template('test.html',pitches =pitches)
+    pitch =Pitch.query.filter_by(id=1).first()
+    return render_template('test.html',pitch= pitch)
 

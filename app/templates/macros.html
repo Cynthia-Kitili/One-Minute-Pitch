@@ -30,7 +30,9 @@
     {% if pitch.category_id==id%}
         <h3>{{pitch.id}}</h3>
         <p>Pitch:{{pitch.pitch}}</p>
-        <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a>
+        <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a><br>
+        <a href="{{url_for('main.view_comments',id=pitch.id)}}">View Comments</a><br>
+        <a href="{{url_for('main.new_comment',id=pitch.id)}}">Vote</a>
     {% endif%}
   {% endfor %}
 {% endmacro%}
