@@ -1,11 +1,12 @@
 
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField,SubmitField, SelectField
+from wtforms import StringField,TextAreaField,SubmitField, SelectField, RadioField
 from wtforms.validators import Required
 
 class CommentsForm(FlaskForm):
     title = StringField('Title',validators=[Required()])
     comment = TextAreaField('Comment', validators=[Required()])
+    vote=RadioField('default field arguments', choices=[('1', 'UpVote'), ('1', 'DownVote')])
     submit = SubmitField('SUBMIT')  
 
 class UpdateProfile(FlaskForm):
@@ -16,4 +17,10 @@ class PitchForm(FlaskForm):
     content = TextAreaField('YOUR PITCH')
     category_id = SelectField('Pitch Category', choices=[('1', 'Interview'), ('2', 'Pick Up Lines'), ('3', 'Promotion'),('4','Product')])
     submit = SubmitField('SUBMIT')
+
+class UpvoteForm(FlaskForm):
+    '''
+    Class to create a wtf form for upvoting a pitch
+    '''
+    submit = SubmitField('Upvote')
     

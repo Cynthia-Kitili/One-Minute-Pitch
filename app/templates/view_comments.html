@@ -6,6 +6,7 @@
         {% for item in pitch.comments %}
         <h3>{{item.comment_title}}</h3>
         <p>{{item.comment}}</p>
+        <h6>By {{item.username}}</h6>
         {%endfor%}
 
     </div>

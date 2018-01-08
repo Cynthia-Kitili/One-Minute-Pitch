@@ -2,7 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
-from datetime import datetime
+from datetime import datetime 
 
 
 
@@ -90,7 +90,9 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     comment_title = db.Column(db.String)
     comment= db.Column(db.String)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id')) 
+    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    username =  db.Column(db.String)
+    votes= db.Column(db.Integer)
     
 
     def save_comment(self):

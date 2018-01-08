@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, abort  
 from . import main  
-from .forms import CommentsForm, UpdateProfile, PitchForm
+from .forms import CommentsForm, UpdateProfile, PitchForm, UpvoteForm
 from ..models import Comment, Pitch, User 
 from flask_login import login_required, current_user
 from .. import db,photos
@@ -143,12 +143,13 @@ def category(id):
 @login_required
 def new_comment(id):
     form = CommentsForm()
+    vote_form = UpvoteForm()
     if form.validate_on_submit():
-        new_comment = Comment(pitch_id =id,comment_title=form.title.data,comment=form.comment.data)
+        new_comment = Comment(pitch_id =id,comment_title=form.title.data,comment=form.comment.data,username=current_user.username,votes=form.vote.data)
         new_comment.save_comment()
         return redirect(url_for('main.index'))
     #title = f'{pitch_result.id} review'
-    return render_template('new_comment.html',comment_form=form)
+    return render_template('new_comment.html',comment_form=form, vote_form= vote_form)
 
 @main.route('/user/<uname>/update/pic',methods= ['POST'])
 @login_required
