@@ -28,11 +28,12 @@
 {% macro displayPitchesInCategories(pitches,id)%}
   {% for pitch in pitches %}
     {% if pitch.category_id==id%}
-        <h3>{{pitch.id}}</h3>
-        <p>Pitch:{{pitch.pitch}}</p>
-        <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a><br>
-        <a href="{{url_for('main.view_comments',id=pitch.id)}}">View Comments</a><br>
-        <a href="{{url_for('main.new_comment',id=pitch.id)}}">Vote</a>
+        <div class="pitch_div">
+            <p>{{pitch.pitch}}</p>
+            <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a><br>
+            <a href="{{url_for('main.view_comments',id=pitch.id)}}">View Comments</a><br>
+            <a href="{{url_for('main.new_comment',id=pitch.id)}}">Vote</a>
+        </div>
     {% endif%}
   {% endfor %}
 {% endmacro%}

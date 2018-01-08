@@ -40,30 +40,22 @@ def pick_up_line():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Home - Welcome to The best Pitching Website Online'
+    title = 'Pick Up Lines'
 
-    search_pitch = request.args.get('pitch_query')
     pitches= Pitch.get_all_pitches()
 
-    if search_pitch:
-        return redirect(url_for('pitch',pitch_name= search_pitch))  
-    else:
-        return render_template('pick_up_lines.html', title = title, pitches= pitches )
+    return render_template('pick_up_lines.html', title = title, pitches= pitches )
 
 @main.route('/promotion/pitches/')
 def promotion():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Home - Welcome to The best Pitching Website Online'
+    title = 'Promotion Pitches'
 
-    search_pitch = request.args.get('pitch_query')
     pitches= Pitch.get_all_pitches()
 
-    if search_pitch:
-        return redirect(url_for('pitch',pitch_name= search_pitch))  
-    else:
-        return render_template('promotion.html', title = title, pitches= pitches )
+    return render_template('promotion.html', title = title, pitches= pitches )
 
 
 @main.route('/product/pitches/')
@@ -71,15 +63,9 @@ def product():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Home - Welcome to The best Pitching Website Online'
-
-    search_pitch = request.args.get('pitch_query')
+    title = 'Product Pitches'
     pitches= Pitch.get_all_pitches()
-
-    if search_pitch:
-        return redirect(url_for('pitch',pitch_name= search_pitch))  
-    else:
-        return render_template('product.html', title = title, pitches= pitches )
+    return render_template('product.html', title = title, pitches= pitches )
  
 #  end of category root functions
 
@@ -105,7 +91,7 @@ def search(pitch_name):
 
     return render_template('search.html',pitches = searched_pitches)
 
-@main.route('/category/pitch/new/', methods = ['GET','POST'])
+@main.route('/pitch/new/', methods = ['GET','POST'])
 @login_required
 def new_pitch():
     '''
@@ -122,7 +108,8 @@ def new_pitch():
         category_id = form.category_id.data
         new_pitch= Pitch(pitch= pitch, category_id= category_id)
 
-        new_pitch.save_pitch() 
+        new_pitch.save_pitch()
+        return redirect(url_for('main.index'))
 
     return render_template('new_pitch.html', new_pitch_form= form, category= category)
 
@@ -195,8 +182,8 @@ def view_comments(id):
     '''
     Function that returs  the comments belonging to a particular pitch
     '''
-    pitch =Pitch.query.filter_by(id=id).first()
-    return render_template('view_comments.html',pitch= pitch, id=id)
+    comments = Comment.get_comments(id)
+    return render_template('view_comments.html',comments = comments, id=id)
 
 
 

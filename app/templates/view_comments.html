@@ -1,13 +1,17 @@
 {% extends 'base.html'%}
 
 {% block content %}
- <h3>Comments for {{id}}</h3>
     <div class="container">
-        {% for item in pitch.comments %}
-        <h3>{{item.comment_title}}</h3>
-        <p>{{item.comment}}</p>
-        <h6>By {{item.username}}</h6>
-        {%endfor%}
+        <h3>Comments:</h3>
+        <h6>Found :{{ comments | count }} Comments</h6>
+        <hr>
+        {% for item in comments %}
+    
+            <h4>{{item.comment_title}}</h4>
+            <p>{{item.comment}}</p>
+            <h5>Posted by: {{item.username}}</h5>
+            {%endfor%}
 
     </div>
+   
 {% endblock %}

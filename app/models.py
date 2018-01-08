@@ -108,13 +108,9 @@ class Comment(db.Model):
 
     @classmethod
     def get_comments(cls,id):
-        results=[]
+        comments = Comment.query.filter_by(pitch_id=id).all()
 
-        for comment in cls.all_comments:
-            if comment.pitch_id == id:
-                results.append(comment)
-
-        return results
+        return comments
 
 class Role(db.Model):
     __tablename__ = 'roles'
