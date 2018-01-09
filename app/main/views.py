@@ -129,7 +129,7 @@ def new_comment(id):
     form = CommentsForm()
     vote_form = UpvoteForm()
     if form.validate_on_submit():
-        new_comment = Comment(pitch_id =id,comment_title=form.title.data,comment=form.comment.data,username=current_user.username,votes=form.vote.data)
+        new_comment = Comment(pitch_id =id,comment=form.comment.data,username=current_user.username,votes=form.vote.data)
         new_comment.save_comment()
         return redirect(url_for('main.index'))
     #title = f'{pitch_result.id} review'
