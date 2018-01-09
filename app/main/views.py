@@ -17,12 +17,9 @@ def index():
     title = 'Home - Welcome to The best Pitching Website Online'
 
     search_pitch = request.args.get('pitch_query')
-    pitches= Pitch.get_all_pitches()
+    pitches= Pitch.get_all_pitches()  
 
-    if search_pitch:
-        return redirect(url_for('pitch',pitch_name= search_pitch))  
-    else:
-        return render_template('index.html', title = title, pitches= pitches )
+    return render_template('index.html', title = title, pitches= pitches)
 
 #this section consist of the category root functions
 
@@ -145,7 +142,7 @@ def update_pic(uname):
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
-        user.profile_pic_path = path
+        user.profile_pic_path = path 
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
