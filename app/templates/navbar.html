@@ -7,7 +7,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" style="color:black; font-weight:bolder;"> <a href="#" class="btn btn-lg">
+            <a class="navbar-brand" href="/" style="color:black; font-weight:bolder;"> <a href="/" class="btn btn-lg">
                 <span class="glyphicon glyphicon-home"></span> Home
               </a></a>
         </div>
@@ -18,7 +18,7 @@
                 <li><a href="{{url_for('main.profile',uname=current_user.username)}}" style="color:black; font-weight:bolder;">{{current_user.username}}</a></li>
                 <li><a href="{{url_for('auth.logout')}}" style="color:black; font-weight:bolder;">Sign out</a></li>
                 {% else %}
-                <li><a href="{{url_for('auth.login')}}">Log in</a></li>
+                <li><a href="{{url_for('auth.login')}}" style="color:black; font-weight:bolder;">Log in</a></li>
                 {%endif%}
             </ul>
         </div>
